@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "You are trying to access that which is not yours. Stop here, and return to whence you logged in from."

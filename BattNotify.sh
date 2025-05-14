@@ -12,5 +12,5 @@ do
     then
         systemctl suspend
     fi
-sleep 60
+    sleep 10
 done

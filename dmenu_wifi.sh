@@ -11,8 +11,9 @@ show_password () {
 
 list () {
     network=$(nmcli -f "SSID" dev wifi list | rofi -dmenu -i -location 2 -p "WiFi Nets");
-    if $(nmcli dev wifi con $network | grep password); then
-        rofi -dmenu -l 0 -location 2 -p "Enter Password";
+    if [[ $(nmcli dev wifi con $network | grep Password) ]]; then
+        password=$(rofi -dmenu -l 0 -location 2 -p "Enter Password");
+        nmcli dev wifi con $network password $password;
     fi
 }
 

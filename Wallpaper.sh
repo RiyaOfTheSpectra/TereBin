@@ -9,7 +9,7 @@ while true
 do
     numbgs=$(ls $HOME/Z/Photograms/Backgrounds | wc -l)
     upfile=$prefix$(printf "%02d" $((1 + $RANDOM % $numbgs)))$suffix
-    swaybg -m fill -i $upfile &
+    swaybg -c 16000b -m fit -i $upfile &
     oldpid=$!
     sleep $time
     kill $oldpid

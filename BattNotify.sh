@@ -1,16 +1,19 @@
-#!/bin/bash
+#!/bin/sh
+
 while true
 do
-    bat=`acpi -b | grep -P -o '[0-9]+(?=%)'`
-    battery_state=`acpi -b | grep -P -o ': ...........'`
+    battery_state=$(apm -a)
+    bat=$(apm -l)
 
-    if [ "$battery_state" = ": Discharging" ] && [ $bat -le 10 ]
+    if [ "$battery_state" = "0" ]
     then
+        if [ $bat -le 4 ]
+        then
+            zzz
+        elif [ $bat -le 10 ]
+        then
             notify-send -u critical "Help!!!" "My batteries are dying!"
-    fi
-    if [ "$battery_state" = ": Discharging" ] && [ $bat -le 4 ]
-    then
-        systemctl suspend
+        fi
     fi
     sleep 10
 done

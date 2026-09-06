@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 status=$(nmcli general status connectivity | tail -n 1 | awk '{print $2}')
 output=$(curl wttr.in/?format='%m+%l:+%C+%t,+%P\n')

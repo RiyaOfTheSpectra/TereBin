@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/usr/local/bin/zsh
 
 prefix="$HOME/Z/Photograms/Backgrounds/"
 suffix=".png"
 
-time=$((450 + $RANDOM % 600))
 
 while true
 do
@@ -11,6 +10,7 @@ do
     upfile=$prefix$(printf "%02d" $((1 + $RANDOM % $numbgs)))$suffix
     swaybg -c 16000b -m fit -i $upfile &
     oldpid=$!
+    time=$((450 + $RANDOM % 600))
     sleep $time
     kill $oldpid
 done
